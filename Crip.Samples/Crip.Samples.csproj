@@ -92,6 +92,10 @@
       <Project>{2f8bb314-f48e-4d4c-aa04-483a3b407fe0}</Project>
       <Name>Crip.Samples.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Crip.Samples.Services\Crip.Samples.Services.csproj">
+      <Project>{6E705C00-F7D2-48E3-99E6-A00489E10178}</Project>
+      <Name>Crip.Samples.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

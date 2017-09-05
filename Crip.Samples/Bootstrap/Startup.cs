@@ -1,5 +1,4 @@
 ﻿using Castle.Windsor;
-using Castle.Windsor.Installer;
 using Microsoft.Owin;
 using Owin;
 using Owino.Extensions;

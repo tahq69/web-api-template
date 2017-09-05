@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Crip.Samples.Services;
 
 namespace Crip.Samples.Bootstrap
 {
@@ -13,6 +14,8 @@ namespace Crip.Samples.Bootstrap
                 .Configure(configurer => configurer.Named(configurer.Implementation.Name))
                 .LifestylePerWebRequest()
             );
+
+            container.Register(Component.For<IProductService>().ImplementedBy<ProductService>());
 
             /* container.Register(Component.For<RoleManager<IdentityRole>>()
                 .UsingFactoryMethod((kernel, cx) =>
