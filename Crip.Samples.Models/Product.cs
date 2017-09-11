@@ -1,5 +1,8 @@
 ﻿namespace Crip.Samples.Models
 {
+    /// <summary>
+    /// Product class
+    /// </summary>
     public class Product
     {
         /// <summary>

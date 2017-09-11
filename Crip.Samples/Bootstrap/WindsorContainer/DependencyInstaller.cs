@@ -1,19 +1,27 @@
-﻿using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.SubSystems.Configuration;
-using Castle.Windsor;
-using Crip.Samples.Services;
-
-namespace Crip.Samples.Bootstrap
+﻿namespace Crip.Samples.Bootstrap
 {
+    using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
+    using Castle.Windsor;
+    using Crip.Samples.Services;
+
+    /// <summary>
+    /// Library dependency installation configurations.
+    /// </summary>
+    /// <seealso cref="Castle.MicroKernel.Registration.IWindsorInstaller" />
     public class DependencyInstaller : IWindsorInstaller
     {
+        /// <summary>
+        /// Performs the installation in the <see cref="T:Castle.Windsor.IWindsorContainer" />.
+        /// </summary>
+        /// <param name="container">The container.</param>
+        /// <param name="store">The configuration store.</param>
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Classes.FromThisAssembly()
                 .Pick().If(t => t.Name.EndsWith("Controller"))
                 .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                .LifestylePerWebRequest()
-            );
+                .LifestylePerWebRequest());
 
             container.Register(Component.For<IProductService>().ImplementedBy<ProductService>());
 
