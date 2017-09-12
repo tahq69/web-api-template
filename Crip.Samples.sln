@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crip.Samples", "Crip.Samples\Crip.Samples.csproj", "{374814A2-23BD-4309-902B-7ABD69AA3427}"
 EndProject
@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F81F38ED-C458-4008-B6CB-9C735CB272ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crip.Samples.Services.Tests", "Crip.Samples.Services.Tests\Crip.Samples.Services.Tests.csproj", "{4AA95CCF-9CC9-44E8-AB82-506D95627185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,8 +42,18 @@ Global
 		{6E705C00-F7D2-48E3-99E6-A00489E10178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E705C00-F7D2-48E3-99E6-A00489E10178}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E705C00-F7D2-48E3-99E6-A00489E10178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA95CCF-9CC9-44E8-AB82-506D95627185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA95CCF-9CC9-44E8-AB82-506D95627185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA95CCF-9CC9-44E8-AB82-506D95627185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA95CCF-9CC9-44E8-AB82-506D95627185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AA95CCF-9CC9-44E8-AB82-506D95627185} = {F81F38ED-C458-4008-B6CB-9C735CB272ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13ADBA4B-42C7-4EC1-95AA-6E7E4E7DA1C1}
 	EndGlobalSection
 EndGlobal
