@@ -1,5 +1,7 @@
 ﻿namespace Crip.Samples.Models
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Product class
     /// </summary>
@@ -24,5 +26,10 @@
         /// Gets or sets the price of product.
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of product comments.
+        /// </summary>
+        public virtual List<ProductComment> Comments { get; set; }
     }
 }
