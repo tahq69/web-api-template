@@ -5,7 +5,7 @@
     /// <summary>
     /// Product class
     /// </summary>
-    public class Product
+    public class Product : IModel
     {
         /// <summary>
         /// Gets or sets the identifier of product.

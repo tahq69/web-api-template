@@ -3,7 +3,7 @@
     /// <summary>
     /// Product comment class
     /// </summary>
-    public class ProductComment
+    public class ProductComment : IModel
     {
         /// <summary>
         /// Gets or sets the comment identifier.

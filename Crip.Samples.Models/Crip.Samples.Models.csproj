@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IModel.cs" />
     <Compile Include="ProductComment.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Product.cs" />

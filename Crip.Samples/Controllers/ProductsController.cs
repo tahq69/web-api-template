@@ -1,6 +1,7 @@
 ﻿namespace Crip.Samples.Controllers
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using System.Web.Http;
     using Crip.Samples.Models;
     using Crip.Samples.Services;
@@ -20,9 +21,9 @@
         /// Gets all products.
         /// </summary>
         /// <returns>Collection of all products.</returns>
-        public IEnumerable<Product> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            return this.Products.All();
+            return await this.Products.AllAsync();
         }
 
         /// <summary>
@@ -30,9 +31,9 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Single product instance.</returns>
-        public IHttpActionResult GetProduct(int id)
+        public async Task<IHttpActionResult> GetProduct(int id)
         {
-            var product = this.Products.Find(id);
+            var product = await this.Products.FindAsync(id);
             if (product == null)
             {
                 return this.NotFound();
