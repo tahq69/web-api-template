@@ -1,8 +1,8 @@
-﻿namespace Crip.Samples.Services.Tests
+﻿namespace Crip.Samples.Tests
 {
     using Crip.Samples.Data;
     using Crip.Samples.Models;
-    using Crip.Samples.Services.Tests.Utils;
+    using Crip.Samples.Tests.Utils;
     using NSubstitute;
     using System.Collections.Generic;
     using System.Data.Entity;

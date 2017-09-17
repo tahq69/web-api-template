@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Crip.Samples")]
-[assembly: AssemblyDescription("Crip.Samples Web API")]
+[assembly: AssemblyTitle("Crip_Samples_Name")]
+[assembly: AssemblyDescription("Crip_Samples_Description")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Crip.Samples")]

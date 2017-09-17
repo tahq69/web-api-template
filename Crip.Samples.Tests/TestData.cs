@@ -1,4 +1,4 @@
-﻿namespace Crip.Samples.Services.Tests
+﻿namespace Crip.Samples.Tests
 {
     /// <summary>
     /// Test data.

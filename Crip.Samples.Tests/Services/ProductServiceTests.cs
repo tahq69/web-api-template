@@ -1,5 +1,6 @@
-﻿namespace Crip.Samples.Services.Tests
+﻿namespace Crip.Samples.Tests.Services
 {
+    using Crip.Samples.Services;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Linq;
     using System.Threading.Tasks;

@@ -2,18 +2,18 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Crip.Samples.Services.Tests")]
+[assembly: AssemblyTitle("Crip.Samples.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Crip.Samples.Services.Tests")]
+[assembly: AssemblyProduct("Crip.Samples.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("4aa95ccf-9cc9-44e8-ab82-506d95627185")]
+[assembly: Guid("b5841ea8-f69d-4d82-9b7a-874e1d33b879")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]

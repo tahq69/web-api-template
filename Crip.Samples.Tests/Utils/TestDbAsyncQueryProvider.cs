@@ -1,4 +1,4 @@
-﻿namespace Crip.Samples.Services.Tests.Utils
+﻿namespace Crip.Samples.Tests.Utils
 {
     using System.Data.Entity.Infrastructure;
     using System.Linq;
