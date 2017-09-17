@@ -6,7 +6,7 @@ namespace Crip.Samples.Data.Migrations
     /// Database migration configuration.
     /// </summary>
     /// <seealso cref="System.Data.Entity.Migrations.DbMigrationsConfiguration{T}" />
-    internal sealed class Configuration : DbMigrationsConfiguration<Crip.Samples.Data.DatabaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DatabaseContext>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration"/> class.

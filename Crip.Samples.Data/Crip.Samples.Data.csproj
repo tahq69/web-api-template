@@ -56,9 +56,9 @@
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDatabaseContext.cs" />
-    <Compile Include="Migrations\201709131220151_InitialStructure.cs" />
-    <Compile Include="Migrations\201709131220151_InitialStructure.Designer.cs">
-      <DependentUpon>201709131220151_InitialStructure.cs</DependentUpon>
+    <Compile Include="Migrations\201709171212173_InitialStructure.cs" />
+    <Compile Include="Migrations\201709171212173_InitialStructure.Designer.cs">
+      <DependentUpon>201709171212173_InitialStructure.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,8 +79,8 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709131220151_InitialStructure.resx">
-      <DependentUpon>201709131220151_InitialStructure.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709171212173_InitialStructure.resx">
+      <DependentUpon>201709171212173_InitialStructure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

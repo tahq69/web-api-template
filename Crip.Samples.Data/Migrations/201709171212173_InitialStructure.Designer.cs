@@ -13,7 +13,7 @@ namespace Crip.Samples.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201709131220151_InitialStructure"; }
+            get { return "201709171212173_InitialStructure"; }
         }
         
         string IMigrationMetadata.Source

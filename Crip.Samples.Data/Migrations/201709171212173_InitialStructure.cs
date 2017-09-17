@@ -20,7 +20,7 @@ namespace Crip.Samples.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.ProductComments",
+                "dbo.ProductComment",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
@@ -29,11 +29,11 @@ namespace Crip.Samples.Data.Migrations
                     ProductId = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.Product", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.ProductId);
 
             CreateTable(
-                "dbo.Products",
+                "dbo.Product",
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
@@ -42,6 +42,7 @@ namespace Crip.Samples.Data.Migrations
                     Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                 })
                 .PrimaryKey(t => t.Id);
+
         }
 
         /// <summary>
@@ -49,10 +50,10 @@ namespace Crip.Samples.Data.Migrations
         /// </summary>
         public override void Down()
         {
-            DropForeignKey("dbo.ProductComments", "ProductId", "dbo.Products");
-            DropIndex("dbo.ProductComments", new[] { "ProductId" });
-            DropTable("dbo.Products");
-            DropTable("dbo.ProductComments");
+            DropForeignKey("dbo.ProductComment", "ProductId", "dbo.Product");
+            DropIndex("dbo.ProductComment", new[] { "ProductId" });
+            DropTable("dbo.Product");
+            DropTable("dbo.ProductComment");
         }
     }
 }
