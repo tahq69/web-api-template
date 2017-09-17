@@ -13,10 +13,8 @@ if ($isNameDefault -or $isDescriptionDefault -or $isNamespaceDefault) {
 }
 #>
 
-$files = @()
-Get-All-Files $root.FullName $files
-
-foreach ($file in $files) {
-	Write-Log $file.FullName
-}
+$csFiles = Get-All-Files $root.FullName '*.cs'
+$projFiles = Get-All-Files $root.FullName '*.csproj'
+$configFiles = Get-All-Files $root.FullName '*.config'
+$slnFiles = Get-All-Files $root.FullName '*.sln'
 
