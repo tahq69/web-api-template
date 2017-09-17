@@ -3,6 +3,7 @@
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using Crip.Samples.Data;
     using Crip.Samples.Services;
 
     /// <summary>
@@ -24,6 +25,7 @@
                 .LifestylePerWebRequest());
 
             container.Register(Component.For<IProductService>().ImplementedBy<ProductService>());
+            container.Register(Component.For<IDatabaseContext>().ImplementedBy<DatabaseContext>());
 
             /* container.Register(Component.For<RoleManager<IdentityRole>>()
                 .UsingFactoryMethod((kernel, cx) =>

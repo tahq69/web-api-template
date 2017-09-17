@@ -36,12 +36,10 @@
             ((IDbAsyncEnumerable<T>)mock).GetAsyncEnumerator()
                 .Returns(new TestDbAsyncEnumerator<T>(data.GetEnumerator()));
 
-            ((IQueryable<T>)mock).Provider
-                .Returns(new TestDbAsyncQueryProvider<T>(data.Provider));
-
-            ((IQueryable<T>)mock).Expression.Returns(data.Expression);
-            ((IQueryable<T>)mock).ElementType.Returns(data.ElementType);
-            ((IQueryable<T>)mock).GetEnumerator().Returns(data.GetEnumerator());
+            mock.Provider.Returns(new TestDbAsyncQueryProvider<T>(data.Provider));
+            mock.Expression.Returns(data.Expression);
+            mock.ElementType.Returns(data.ElementType);
+            mock.GetEnumerator().Returns(data.GetEnumerator());
 
             return mock;
         }

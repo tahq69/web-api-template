@@ -30,20 +30,28 @@
         {
             var result = await this.svc.AllAsync();
 
-            Assert.IsNotNull(result, "Method 'AllAsync' returned null instead of collection");
-            Assert.IsTrue(result.Count() > 0, "Result count should be greater than a 0");
+            Assert.IsNotNull(
+                result,
+                "Method 'AllAsync' returned null instead of collection");
+
+            Assert.IsTrue(
+                result.Count() > 0,
+                "Result count should be greater than a 0");
         }
 
         /// <summary>
         /// Tests product, find shouldreturnrecord with correct identifier.
         /// </summary>
         [TestMethod]
-        public async Task Test_Product_FindShouldreturnrecordWithCorrectIdentifier()
+        public async Task Test_Product_FindShouldreturnrecordWithCorrectId()
         {
             var result = await this.svc.FindAsync(2);
 
-            Assert.IsNotNull(result, "Method 'Find' returned null instead of record");
-            Assert.AreEqual(2, result.Id);
+            Assert.IsNotNull(
+                result, "Method 'Find' returned null instead of record");
+
+            Assert.AreEqual(
+                2, result.Id, "Method 'Find' returned incorrect record");
         }
     }
 }

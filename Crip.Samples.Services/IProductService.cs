@@ -7,7 +7,7 @@
     /// <summary>
     /// Product service contract.
     /// </summary>
-    public interface IProductService
+    public interface IProductService : IService
     {
         /// <summary>
         /// Gets all products from database in async manner.

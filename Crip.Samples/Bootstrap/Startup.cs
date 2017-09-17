@@ -24,13 +24,19 @@ namespace Crip.Samples.Bootstrap
             this.container.Install(new DependencyInstaller());
 
             var config = new HttpConfiguration();
+            var apiDefaults = new
+            {
+                controller = "Status",
+                action = "Index",
+                id = RouteParameter.Optional
+            };
 
             config.DependencyResolver = new WindsorHttpDependencyResolver(this.container);
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "WebApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new { controller = "Status", action = "Get", id = RouteParameter.Optional });
+                defaults: apiDefaults);
 
             app.UseWebApi(config);
             app.RegisterForDisposal(this.container);

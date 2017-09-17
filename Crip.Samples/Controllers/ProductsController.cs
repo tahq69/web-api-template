@@ -18,20 +18,20 @@
         public IProductService Products { get; set; }
 
         /// <summary>
-        /// Gets all products.
+        /// Gets collection of all products.
         /// </summary>
         /// <returns>Collection of all products.</returns>
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<Product>> Index()
         {
             return await this.Products.AllAsync();
         }
 
         /// <summary>
-        /// Gets the product.
+        /// Gets single product instance.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Single product instance.</returns>
-        public async Task<IHttpActionResult> GetProduct(int id)
+        public async Task<IHttpActionResult> Find(int id)
         {
             var product = await this.Products.FindAsync(id);
             if (product == null)

@@ -4,6 +4,7 @@
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Linq.Expressions;
+
     /// <summary>
     /// Database async enumerable test implemenetation.
     /// </summary>
