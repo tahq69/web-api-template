@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Crip.Samples")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Crip.Samples Web API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Crip.Samples")]
