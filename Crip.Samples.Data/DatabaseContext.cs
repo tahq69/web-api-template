@@ -1,8 +1,11 @@
 ﻿namespace Crip.Samples.Data
 {
+    using System;
     using System.Data.Entity;
-    using Crip.Samples.Models;
     using System.Data.Entity.ModelConfiguration.Conventions;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Crip.Samples.Data.Entities;
 
     /// <summary>
     /// Application database context.
@@ -29,14 +32,51 @@
         }
 
         /// <summary>
-        /// Gets or sets the products table.
+        /// Gets or sets the users table.
         /// </summary>
-        public IDbSet<Product> Products { get; set; }
+        public IDbSet<User> Users { get; set; }
 
         /// <summary>
-        /// Gets or sets the product comments table.
+        /// Gets or sets the roles table.
         /// </summary>
-        public IDbSet<ProductComment> ProductComments { get; set; }
+        public IDbSet<Role> Roles { get; set; }
+
+        /// <summary>
+        /// Saves all changes made in this context to the underlying database.
+        /// </summary>
+        /// <returns>
+        /// The number of state entries written to the underlying database.
+        /// This can include state entries for entities and/or relationships.
+        /// Relationship state entries are created for many-to-many
+        /// relationships and relationships where there is no foreign key
+        /// property included in the entity class (often referred to as
+        /// independent associations).
+        /// </returns>
+        public override int SaveChanges()
+        {
+            this.ModifyAuditables();
+            return base.SaveChanges();
+        }
+
+        /// <summary>
+        /// Asynchronously saves all changes made in this context to the underlying database.
+        /// </summary>
+        /// <returns>
+        /// A task that represents the asynchronous save operation.
+        /// The task result contains the number of state entries written to the underlying database. This can include
+        /// state entries for entities and/or relationships. Relationship state entries are created for
+        /// many-to-many relationships and relationships where there is no foreign key property
+        /// included in the entity class (often referred to as independent associations).
+        /// </returns>
+        /// <remarks>
+        /// Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
+        /// that any asynchronous operations have completed before calling another method on this context.
+        /// </remarks>
+        public override Task<int> SaveChangesAsync()
+        {
+            this.ModifyAuditables();
+            return base.SaveChangesAsync();
+        }
 
         /// <summary>
         /// This method is called when the model for a derived context has been
@@ -59,6 +99,24 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        /// <summary>
+        /// Modifies the auditable entities.
+        /// </summary>
+        private void ModifyAuditables()
+        {
+            var now = DateTime.UtcNow;
+
+            this.ChangeTracker.Entries<IEntity>()
+                .Where(p => p.State == EntityState.Added)
+                .Select(p => p.Entity).ToList()
+                .ForEach(x => x.CreatedAt = x.UpdatedAt = now);
+
+            this.ChangeTracker.Entries<IEntity>()
+                .Where(p => p.State == EntityState.Modified)
+                .Select(p => p.Entity).ToList()
+                .ForEach(x => x.UpdatedAt = now);
         }
     }
 }

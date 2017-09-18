@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IModel.cs" />
-    <Compile Include="ProductComment.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="User\Credentials.cs" />
+    <Compile Include="User\Registration.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="User\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Status\StatusDetails.cs" />
   </ItemGroup>

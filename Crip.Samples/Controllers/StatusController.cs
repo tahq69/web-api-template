@@ -15,9 +15,9 @@
     public class StatusController : ApiController
     {
         /// <summary>
-        /// Gets or sets the products service.
+        /// Gets or sets the user service.
         /// </summary>
-        public IProductService Products { get; set; }
+        public IUserService UserSvc { get; set; }
 
         /// <summary>
         /// Gets status details instance.
@@ -54,8 +54,8 @@
 
             try
             {
-                var products = await this.Products.AllAsync();
-                products.FirstOrDefault();
+                var users = await this.UserSvc.All();
+                users.FirstOrDefault();
             }
             catch (Exception ex)
             {

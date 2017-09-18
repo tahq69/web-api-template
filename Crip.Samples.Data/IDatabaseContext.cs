@@ -1,6 +1,6 @@
 ﻿namespace Crip.Samples.Data
 {
-    using Crip.Samples.Models;
+    using Crip.Samples.Data.Entities;
     using System.Data.Entity;
 
     /// <summary>
@@ -9,13 +9,13 @@
     public interface IDatabaseContext
     {
         /// <summary>
-        /// Gets or sets the products table.
+        /// Gets or sets the users table.
         /// </summary>
-        IDbSet<Product> Products { get; set; }
+        IDbSet<User> Users { get; set; }
 
         /// <summary>
-        /// Gets or sets the product comments table.
+        /// Gets or sets the roles table.
         /// </summary>
-        IDbSet<ProductComment> ProductComments { get; set; }
+        IDbSet<Role> Roles { get; set; }
     }
 }

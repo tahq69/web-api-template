@@ -49,8 +49,8 @@
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IService.cs" />
-    <Compile Include="ProductService.cs" />
-    <Compile Include="IProductService.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
   </ItemGroup>

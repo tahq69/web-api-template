@@ -1,39 +1,39 @@
 ﻿namespace Crip.Samples.Controllers
 {
+    using Crip.Samples.Models.User;
+    using Crip.Samples.Services;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Web.Http;
-    using Crip.Samples.Models;
-    using Crip.Samples.Services;
 
     /// <summary>
     /// Products controller
     /// </summary>
     /// <seealso cref="System.Web.Http.ApiController" />
-    public class ProductsController : ApiController
+    public class UserController : ApiController
     {
         /// <summary>
-        /// Gets or sets the products.
+        /// Gets or sets the user service.
         /// </summary>
-        public IProductService Products { get; set; }
+        public IUserService UserSvc { get; set; }
 
         /// <summary>
-        /// Gets collection of all products.
+        /// Gets collection of all users.
         /// </summary>
-        /// <returns>Collection of all products.</returns>
-        public async Task<IEnumerable<Product>> Index()
+        /// <returns>Collection of all users.</returns>
+        public async Task<IEnumerable<User>> Index()
         {
-            return await this.Products.AllAsync();
+            return await this.UserSvc.All();
         }
 
         /// <summary>
-        /// Gets single product instance.
+        /// Gets single user instance.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>Single product instance.</returns>
+        /// <returns>Single user instance.</returns>
         public async Task<IHttpActionResult> Find(int id)
         {
-            var product = await this.Products.FindAsync(id);
+            var product = await this.UserSvc.Find(id);
             if (product == null)
             {
                 return this.NotFound();

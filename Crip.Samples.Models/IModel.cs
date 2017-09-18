@@ -8,6 +8,6 @@
         /// <summary>
         /// Gets or sets model identifier.
         /// </summary>
-        int Id { get; set; }
+        long Id { get; set; }
     }
 }

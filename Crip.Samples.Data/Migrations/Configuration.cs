@@ -1,5 +1,7 @@
 namespace Crip.Samples.Data.Migrations
 {
+    using Crip.Samples.Data.Entities;
+    using Crip.Samples.Data.Types;
     using System.Data.Entity.Migrations;
 
     /// <summary>
@@ -42,17 +44,15 @@ namespace Crip.Samples.Data.Migrations
         /// </remarks>
         protected override void Seed(Crip.Samples.Data.DatabaseContext context)
         {
-            // This method will be called after migrating to the latest version.
+            context.Users.AddOrUpdate(
+                user => user.Email,
+                new User { Email = "admin@crip.lv", Username = "Admin" });
 
-            // You can use the DbSet<T>.AddOrUpdate() helper extension method
-            // to avoid creating duplicate seed data. E.g.
-            //
-            //   context.People.AddOrUpdate(
-            //     p => p.FullName,
-            //     new Person { FullName = "Andrew Peters" },
-            //     new Person { FullName = "Brice Lambson" },
-            //     new Person { FullName = "Rowan Miller" }
-            //   );
+            context.Roles.AddOrUpdate(
+                role => role.Key,
+                new Role { Key = RoleType.SuperAdmin.ToString() },
+                new Role { Key = RoleType.Administrator.ToString() },
+                new Role { Key = RoleType.User.ToString() });
         }
     }
 }

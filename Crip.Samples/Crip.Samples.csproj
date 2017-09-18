@@ -89,7 +89,7 @@
     <Compile Include="Bootstrap\Startup.cs" />
     <Compile Include="Bootstrap\WindsorContainer\WindsorDependencyScope.cs" />
     <Compile Include="Bootstrap\WindsorContainer\WindsorHttpDependencyResolver.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

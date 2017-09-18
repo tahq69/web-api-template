@@ -10,20 +10,24 @@
     {
         private StatusController ctrl;
 
+        protected TestSubstitutes Substitute { get; private set; }
+
         /// <summary>
         /// Sets up method tests.
         /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
-            var svc = new ProductService()
+            this.Substitute = new TestSubstitutes();
+
+            var svc = new UserService()
             {
-                Context = TestSubstitutes.MockContext(),
+                Context = this.Substitute.Context(),
             };
 
             this.ctrl = new StatusController
             {
-                Products = svc,
+                UserSvc = svc,
             };
         }
 

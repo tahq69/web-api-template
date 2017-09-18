@@ -1,9 +1,7 @@
 ﻿namespace Crip.Samples.Models.Status
 {
-    using System;
-
     /// <summary>
-    /// Status setails view model.
+    /// Status details view model.
     /// </summary>
     public class StatusDetails
     {

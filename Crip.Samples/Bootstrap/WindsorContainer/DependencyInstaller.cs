@@ -24,7 +24,7 @@
                 .Configure(configurer => configurer.Named(configurer.Implementation.Name))
                 .LifestylePerWebRequest());
 
-            container.Register(Component.For<IProductService>().ImplementedBy<ProductService>());
+            container.Register(Component.For<IUserService>().ImplementedBy<UserService>());
             container.Register(Component.For<IDatabaseContext>().ImplementedBy<DatabaseContext>());
 
             /* container.Register(Component.For<RoleManager<IdentityRole>>()
