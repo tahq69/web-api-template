@@ -60,6 +60,10 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDatabaseContext.cs" />
+    <Compile Include="Migrations\201709181919133_CreateUserAndRoleTable.cs" />
+    <Compile Include="Migrations\201709181919133_CreateUserAndRoleTable.Designer.cs">
+      <DependentUpon>201709181919133_CreateUserAndRoleTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\RoleType.cs" />
@@ -72,6 +76,11 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709181919133_CreateUserAndRoleTable.resx">
+      <DependentUpon>201709181919133_CreateUserAndRoleTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
