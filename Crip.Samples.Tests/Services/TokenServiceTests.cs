@@ -23,7 +23,7 @@
         [TestMethod]
         public void Test_Token_CreatesNewToken()
         {
-            var token = this.svc.New("name");
+            var (token, guid) = this.svc.New("name");
 
             Assert.IsFalse(
                 string.IsNullOrWhiteSpace(token),
@@ -33,7 +33,7 @@
         [TestMethod]
         public void Test_Token_CreatesNonExpiredToken()
         {
-            var token = this.svc.New("name");
+            var (token, guid) = this.svc.New("name");
             var isExpired = this.svc.IsExpired(token);
 
 
@@ -43,7 +43,7 @@
         [TestMethod]
         public void Test_Token_CreatesTokenWithTTLGreaterThanA23h()
         {
-            var token = this.svc.New("name");
+            var (token, guid) = this.svc.New("name");
             var ttl = this.svc.TokenTimeToLive(token);
 
             Assert.IsTrue(
@@ -54,12 +54,23 @@
         [TestMethod]
         public void Test_Token_CreatesTokenWithCustomTTL()
         {
-            var token = this.svc.New("name", 59);
+            var (token, guid) = this.svc.New("name", 59);
             var ttl = this.svc.TokenTimeToLive(token);
 
             Assert.IsTrue(
                 ttl.TotalHours < 1 && ttl.TotalMinutes > 58,
                 "Token time to live is not in range of expected values");
+        }
+
+        [TestMethod]
+        public void Test_Token_CanGetGuidFromCreatedToken()
+        {
+            var (token, guid) = this.svc.New("name");
+            var resolvedGuid = this.svc.GetGuid(token);
+
+            Assert.AreEqual(
+                guid, resolvedGuid,
+                "Extracted guid is not equal to created one");
         }
     }
 }

@@ -13,9 +13,10 @@
         /// <param name="name">The name.</param>
         /// <param name="tokenTimeToLiveMinutes">The token time to live minutes.</param>
         /// <returns>
-        /// User token
+        /// User token and guid.
         /// </returns>
-        string New(string name, long tokenTimeToLiveMinutes = 1440);
+        (string token, string userGuid) New(
+            string name, long tokenTimeToLiveMinutes = 1440);
 
         /// <summary>
         /// Get tokens the time to live.
@@ -35,5 +36,12 @@
         /// <c>false</c>.
         /// </returns>
         bool IsExpired(string token);
+
+        /// <summary>
+        /// Gets user guid from the specified token.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>User guid.</returns>
+        string GetGuid(string token);
     }
 }
