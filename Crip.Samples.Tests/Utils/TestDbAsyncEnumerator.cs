@@ -25,6 +25,16 @@
         }
 
         /// <summary>
+        /// Gets the current enumerator element.
+        /// </summary>
+        public T Current => this.inner.Current;
+
+        /// <summary>
+        /// Gets the current enumerator element.
+        /// </summary>
+        object IDbAsyncEnumerator.Current => this.Current;
+
+        /// <summary>
         /// Moves the next asynchronous.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
@@ -35,16 +45,6 @@
         /// </returns>
         public Task<bool> MoveNextAsync(CancellationToken cancellationToken)
             => Task.FromResult(this.inner.MoveNext());
-
-        /// <summary>
-        /// Gets the current enumerator element.
-        /// </summary>
-        public T Current => this.inner.Current;
-
-        /// <summary>
-        /// Gets the current enumerator element.
-        /// </summary>
-        object IDbAsyncEnumerator.Current => this.Current;
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing,

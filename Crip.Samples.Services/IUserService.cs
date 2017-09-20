@@ -10,6 +10,11 @@
     public interface IUserService : IService
     {
         /// <summary>
+        /// Gets or sets the security service.
+        /// </summary>
+        ISecurityService SecurityService { get; set; }
+
+        /// <summary>
         /// Authorizes user by the specified credentials.
         /// </summary>
         /// <param name="credentials">The credentials.</param>

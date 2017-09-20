@@ -14,6 +14,11 @@
     public class UserService : Service, IUserService
     {
         /// <summary>
+        /// Gets or sets the security service.
+        /// </summary>
+        public ISecurityService SecurityService { get; set; }
+
+        /// <summary>
         /// Gets all users from database.
         /// </summary>
         /// <returns>
@@ -38,9 +43,21 @@
         /// <returns>
         /// Single instance of a user.
         /// </returns>
-        public Task<User> Find(int id)
+        public async Task<User> Find(int id)
         {
-            throw new System.NotImplementedException();
+            var record = this.Context.Users
+                .Where(user => user.Id == id)
+                .Select(user => new User
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Username = user.Username,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                })
+                .FirstOrDefault();
+
+            return await Task.FromResult(record);
         }
 
         /// <summary>
@@ -62,9 +79,31 @@
         /// <returns>
         /// Authorized user details.
         /// </returns>
-        public Task<UserDetails> Register(Registration registration)
+        public async Task<UserDetails> Register(Registration registration)
         {
-            throw new System.NotImplementedException();
+            var passwordHash = this.SecurityService.Hash(registration.Password);
+
+            var user = new Data.Entities.User
+            {
+                Email = registration.Email,
+                Username = registration.Username,
+                Name = registration.Name,
+                Surname = registration.Surname,
+                Password = passwordHash
+            };
+
+            this.Context.Users.Add(user);
+
+            await this.Context.SaveChangesAsync();
+
+            return new UserDetails
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Username = user.Username,
+                Name = user.Name,
+                Surname = user.Surname,
+            };
         }
     }
 }

@@ -94,7 +94,8 @@
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         public Task<object> ExecuteAsync(
-            Expression expression, CancellationToken cancellationToken)
+            Expression expression,
+            CancellationToken cancellationToken)
             => Task.FromResult(Execute(expression));
 
         /// <summary>
@@ -105,7 +106,8 @@
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         public Task<TResult> ExecuteAsync<TResult>(
-            Expression expression, CancellationToken cancellationToken)
+            Expression expression,
+            CancellationToken cancellationToken)
             => Task.FromResult(Execute<TResult>(expression));
     }
 }

@@ -132,11 +132,10 @@
         /// Hashes the specified plain text.
         /// </summary>
         /// <param name="plainText">The plain text.</param>
-        /// <param name="passPhrase">The pass phrase.</param>
         /// <returns>
         /// Hashed text.
         /// </returns>
-        public string Hash(string plainText, string passPhrase)
+        public string Hash(string plainText)
         {
             // Create the salt value with a cryptographic PRNG
             byte[] salt;
@@ -163,12 +162,11 @@
         /// </summary>
         /// <param name="plainText">The plain text.</param>
         /// <param name="hashText">The hash text.</param>
-        /// <param name="passPhrase">The pass phrase.</param>
         /// <returns>
         /// <c>true</c> if [hash text] is equals to the specified [plain text];
         /// otherwise, <c>false</c>.
         /// </returns>
-        public bool IsHashEquals(string plainText, string hashText, string passPhrase)
+        public bool IsHashEquals(string plainText, string hashText)
         {
             var hashBytes = Convert.FromBase64String(hashText);
 

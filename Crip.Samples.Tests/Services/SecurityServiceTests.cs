@@ -56,7 +56,7 @@
         [TestMethod]
         public void Test_Security_HashesText()
         {
-            var hash = this.svc.Hash("text", "salt");
+            var hash = this.svc.Hash("text");
 
             Assert.IsFalse(
                 string.IsNullOrWhiteSpace(hash),
@@ -70,28 +70,28 @@
         [TestMethod]
         public void Test_Security_CanCompareHashedText()
         {
-            var hash = this.svc.Hash("text", "salt");
+            var hash = this.svc.Hash("text");
 
             Assert.IsTrue(
-                this.svc.IsHashEquals("text", hash, "salt"),
+                this.svc.IsHashEquals("text", hash),
                 "Could not compare equal hash texts");
         }
 
         [TestMethod]
         public void Test_Security_CanCompareDifferentlyHashedText()
         {
-            var hash = this.svc.Hash("text", "salt");
+            var hash = this.svc.Hash("text");
 
             Assert.IsFalse(
-                this.svc.IsHashEquals("text2", hash, "salt"),
+                this.svc.IsHashEquals("text2", hash),
                 "Could compare non equal hash texts");
         }
 
         [TestMethod]
         public void Test_Security_GeneratesDifferentHashes()
         {
-            var hash = this.svc.Hash("text", "salt");
-            var newHash = this.svc.Hash("text", "salt");
+            var hash = this.svc.Hash("text");
+            var newHash = this.svc.Hash("text");
 
             Assert.AreNotEqual(
                 hash, newHash,

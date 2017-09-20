@@ -38,6 +38,7 @@
             this.mock.ElementType.Returns(this.Data.ElementType);
             this.mock.GetEnumerator().Returns(this.Data.GetEnumerator());
 
+            this.Reset();
             this.mock.When(x => x.Add(Arg.Any<T>())).Do(x => this.Inserted.Add(x.Arg<T>()));
             this.mock.When(x => x.Remove(Arg.Any<T>())).Do(x => this.Deleted.Add(x.Arg<T>()));
         }

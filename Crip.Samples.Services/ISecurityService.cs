@@ -25,9 +25,8 @@
         /// Hashes the specified plain text.
         /// </summary>
         /// <param name="plainText">The plain text.</param>
-        /// <param name="passPhrase">The pass phrase.</param>
         /// <returns>Hashed text.</returns>
-        string Hash(string plainText, string passPhrase);
+        string Hash(string plainText);
 
         /// <summary>
         /// Determines whether is [hash text] is equals to the specified
@@ -35,11 +34,10 @@
         /// </summary>
         /// <param name="plainText">The plain text.</param>
         /// <param name="hashText">The hash text.</param>
-        /// <param name="passPhrase">The pass phrase.</param>
         /// <returns>
         /// <c>true</c> if [hash text] is equals to the specified [plain text];
         /// otherwise, <c>false</c>.
         /// </returns>
-        bool IsHashEquals(string plainText, string hashText, string passPhrase);
+        bool IsHashEquals(string plainText, string hashText);
     }
 }
