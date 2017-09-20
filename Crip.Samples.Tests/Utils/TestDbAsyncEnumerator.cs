@@ -52,7 +52,7 @@
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
+            Dispose(false);
         }
 
         /// <summary>

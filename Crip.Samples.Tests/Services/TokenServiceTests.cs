@@ -13,7 +13,6 @@
     public class TokenServiceTests
     {
         private ITokenService svc;
-        private ISecurityService security;
 
         /// <summary>
         /// Sets up method tests.
