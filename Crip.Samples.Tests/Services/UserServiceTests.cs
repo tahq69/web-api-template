@@ -24,12 +24,14 @@
         public void SetUp()
         {
             var securityService = NSubstitute.Substitute.For<ISecurityService>();
+            var tokenService = NSubstitute.Substitute.For<ITokenService>();
 
             this.Substitute = new TestSubstitutes();
             this.svc = new UserService
             {
                 Context = this.Substitute.Context(),
                 SecurityService = securityService,
+                TokenService = tokenService,
             };
         }
 
@@ -181,6 +183,10 @@
                 .IsHashEquals("Password_1", "Password_1_Hash")
                 .Returns(true);
 
+            this.svc.TokenService
+                .New("TomSoup@example.com")
+                .Returns(("token", "guid"));
+
             var result = await this.svc.Login(new Credentials
             {
                 Username = "TomSoup@example.com",
@@ -210,6 +216,10 @@
             this.svc.SecurityService
                 .IsHashEquals("Password_2", "Password_1_Hash")
                 .Returns(false);
+
+            this.svc.TokenService
+                .New("TomSoup@example.com")
+                .Returns(("token", "guid"));
 
             var result = await this.svc.Login(new Credentials
             {

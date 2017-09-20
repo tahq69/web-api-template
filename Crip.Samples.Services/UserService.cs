@@ -19,6 +19,11 @@
         public ISecurityService SecurityService { get; set; }
 
         /// <summary>
+        /// Gets or sets the token service.
+        /// </summary>
+        public ITokenService TokenService { get; set; }
+
+        /// <summary>
         /// Gets all users from database.
         /// </summary>
         /// <returns>
@@ -67,9 +72,41 @@
         /// <returns>
         /// Authorized user details.
         /// </returns>
-        public Task<UserDetails> Login(Credentials credentials)
+        public async Task<UserDetails> Login(Credentials credentials)
         {
-            throw new System.NotImplementedException();
+            var login = credentials.Username;
+            var auth = this.Context.Users
+                .Where(user => user.Email == login || user.Username == login)
+                .FirstOrDefault();
+
+            if (auth == null)
+            {
+                return null;
+            }
+
+            var isValidPassword = this.SecurityService
+                .IsHashEquals(credentials.Password, auth.Password);
+
+            if (!isValidPassword)
+            {
+                return null;
+            }
+
+            var (token, guid) = this.TokenService.New(auth.Username);
+
+            auth.RememberToken = guid;
+
+            await this.Context.SaveChangesAsync();
+
+            return new UserDetails
+            {
+                Id = auth.Id,
+                Email = auth.Email,
+                Username = auth.Username,
+                Name = auth.Name,
+                Surname = auth.Surname,
+                Token = token
+            };
         }
 
         /// <summary>

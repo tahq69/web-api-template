@@ -15,6 +15,11 @@
         ISecurityService SecurityService { get; set; }
 
         /// <summary>
+        /// Gets or sets the token service.
+        /// </summary>
+        ITokenService TokenService { get; set; }
+
+        /// <summary>
         /// Authorizes user by the specified credentials.
         /// </summary>
         /// <param name="credentials">The credentials.</param>
