@@ -22,6 +22,11 @@
         }
 
         /// <summary>
+        /// Gets or sets the security service.
+        /// </summary>
+        public ISecurityService SecuritySvc { get; set; }
+
+        /// <summary>
         /// Gets user guid from the specified token.
         /// </summary>
         /// <param name="token">The token.</param>
@@ -69,7 +74,7 @@
             };
 
             var tokenValue = JsonConvert.SerializeObject(data);
-            var crypted = StringCipher.Encrypt(tokenValue, this.salt);
+            var crypted = this.SecuritySvc.Encrypt(tokenValue, this.salt);
 
             var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(crypted));
 
@@ -94,7 +99,7 @@
         {
             var bytes = Convert.FromBase64String(token);
             var crypted = UTF8Encoding.UTF8.GetString(bytes);
-            var decrypted = StringCipher.Decrypt(crypted, this.salt);
+            var decrypted = this.SecuritySvc.Decrypt(crypted, this.salt);
 
             var data = JsonConvert.DeserializeObject<TokenData>(decrypted);
 

@@ -51,12 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="ISecurityService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="ITokenService.cs" />
+    <Compile Include="SecurityService.cs">
+      <DependentUpon>ISecurityService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service.cs">
       <DependentUpon>IService.cs</DependentUpon>
     </Compile>
-    <Compile Include="StringCipher.cs" />
     <Compile Include="TokenData.cs">
       <DependentUpon>ITokenService.cs</DependentUpon>
     </Compile>

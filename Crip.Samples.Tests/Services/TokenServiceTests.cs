@@ -2,6 +2,9 @@
 {
     using Crip.Samples.Services;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Newtonsoft.Json;
+    using NSubstitute;
+    using System;
 
     /// <summary>
     /// Token service tests.
@@ -10,6 +13,7 @@
     public class TokenServiceTests
     {
         private ITokenService svc;
+        private ISecurityService security;
 
         /// <summary>
         /// Sets up method tests.
@@ -17,7 +21,11 @@
         [TestInitialize]
         public void SetUp()
         {
-            this.svc = new TokenService();
+            // This tests includes SecurityService as it is impossible to test
+            // functionality on fake data.
+            this.svc = new TokenService {
+                SecuritySvc = new SecurityService()
+            };
         }
 
         [TestMethod]
