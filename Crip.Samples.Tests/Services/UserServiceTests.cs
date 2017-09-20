@@ -229,5 +229,35 @@
 
             Assert.IsNull(result, "On incorrect input can get user");
         }
+
+        [TestMethod]
+        public async Task Test_User_LoginShouldUpdateRememberTokenValue()
+        {
+            this.svc.SecurityService
+                .IsHashEquals("Password_1", "Password_1_Hash")
+                .Returns(true);
+
+            this.svc.TokenService
+                .New(TestData.UserTom.Username)
+                .Returns(("token", "new-guid"));
+
+            var result = await this.svc.Login(new Credentials
+            {
+                Username = TestData.UserTom.Email,
+                Password = "Password_1",
+            });
+
+            Assert.IsNotNull(result, "On incorrect input can get user");
+
+            var userToken = this.Substitute.Users.Data
+                .First(u => u.Email.Equals(TestData.UserTom.Email))
+                .RememberToken;
+
+            Assert.AreEqual(
+                "new-guid", userToken,
+                "User token is not updated in database");
+
+            await this.svc.Context.Received().SaveChangesAsync();
+        }
     }
 }
