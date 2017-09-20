@@ -2,6 +2,8 @@
 {
     using Crip.Samples.Models.User;
     using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,9 +19,16 @@
         /// <returns>
         /// Collection of all users.
         /// </returns>
-        public Task<IEnumerable<User>> All()
+        public async Task<IEnumerable<User>> All()
         {
-            throw new System.NotImplementedException();
+            return await this.Context.Users.Select(user => new User
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Username = user.Username,
+                Name = user.Name,
+                Surname = user.Surname,
+            }).ToListAsync();
         }
 
         /// <summary>
