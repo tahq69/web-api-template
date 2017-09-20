@@ -155,5 +155,69 @@
                 inserted.Username, result.Username,
                 "Inserted email is not equal to returned one");
         }
+
+        [TestMethod]
+        public async Task Test_User_LoginShouldReturnUserDetailsModel()
+        {
+            this.svc.SecurityService
+                .IsHashEquals("Password_1", "Password_1_Hash")
+                .Returns(true);
+
+            var result = await this.svc.Login(new Credentials
+            {
+                Username = "TomSoup",
+                Password = "Password_1",
+            });
+
+            Assert.AreEqual(
+                "TomSoup", result.Username,
+                "Could not get correct user");
+        }
+
+        [TestMethod]
+        public async Task Test_User_LoginShouldReturnUserDetailsModelByEmail()
+        {
+            this.svc.SecurityService
+                .IsHashEquals("Password_1", "Password_1_Hash")
+                .Returns(true);
+
+            var result = await this.svc.Login(new Credentials
+            {
+                Username = "TomSoup@example.com",
+                Password = "Password_1",
+            });
+
+            Assert.AreEqual(
+                "TomSoup", result.Username,
+                "Could not get correct user");
+        }
+
+        [TestMethod]
+        public async Task Test_User_LoginShouldReturnNullOnIncorrectUsername()
+        {
+            var result = await this.svc.Login(new Credentials
+            {
+                Username = "TomSoup@example",
+                Password = "Password_1",
+            });
+
+            Assert.IsNull(result, "On incorrect input can get user");
+        }
+
+        [TestMethod]
+        public async Task Test_User_LoginShouldReturnNullOnIncorrectPassword()
+        {
+            this.svc.SecurityService
+                .IsHashEquals("Password_2", "Password_1_Hash")
+                .Returns(false);
+
+            var result = await this.svc.Login(new Credentials
+            {
+                Username = "TomSoup@example.com",
+                Password = "Password_2",
+            });
+
+            Assert.IsNull(result, "On incorrect input can get user");
+        }
     }
 }

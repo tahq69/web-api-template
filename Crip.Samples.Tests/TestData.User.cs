@@ -17,6 +17,7 @@
             Surname = "Soup",
             Email = "TomSoup@example.com",
             Username = "TomSoup",
+            Password = "Password_1_Hash",
         };
 
         /// <summary>
@@ -29,6 +30,7 @@
             Surname = "Yo",
             Email = "YoYo@example.com",
             Username = "YoYo",
+            Password = "Password_2_Hash",
         };
 
         /// <summary>
@@ -41,6 +43,7 @@
             Surname = "Hammer",
             Email = "HarleyHammer@example.com",
             Username = "HarleyHammer",
+            Password = "Password_3_Hash",
         };
 
         /// <summary>
