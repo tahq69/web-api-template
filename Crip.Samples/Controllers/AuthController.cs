@@ -3,6 +3,7 @@
     using Crip.Samples.Models.User;
     using Crip.Samples.Services;
     using Crip.Samples.Validation;
+    using System;
     using System.Threading.Tasks;
     using System.Web.Http;
 
@@ -31,6 +32,11 @@
             credentials.Validate(new LoginValidator(this.Context));
 
             var user = await this.UserService.Login(credentials);
+
+            if (user == null)
+            {
+                throw new UnauthorizedAccessException();
+            }
 
             return user;
         }

@@ -41,6 +41,7 @@ namespace Crip.Samples.Bootstrap
                 defaults: apiDefaults);
 
             config.Filters.Add(new ValidationExceptionAttribute());
+            config.Filters.Add(new UnauthorizedAccessAttribute());
 
             app.UseWebApi(config);
             app.RegisterForDisposal(this.container);

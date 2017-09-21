@@ -109,6 +109,7 @@
     <Compile Include="Validation\BaseValidator.cs" />
     <Compile Include="Validation\Extensions.cs" />
     <Compile Include="Validation\LoginValidator.cs" />
+    <Compile Include="Validation\UnauthorizedAccessAttribute.cs" />
     <Compile Include="Validation\ValidationExceptionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Crip.Samples.Data\Crip.Samples.Data.csproj">
-      <Project>{2CF5E9EA-BF44-40A5-BE3F-52697D37CC35}</Project>
+      <Project>{2cf5e9ea-bf44-40a5-be3f-52697d37cc35}</Project>
       <Name>Crip.Samples.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crip.Samples.Models\Crip.Samples.Models.csproj">
