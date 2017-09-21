@@ -50,6 +50,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.1.1\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -97,10 +100,16 @@
     <Compile Include="Bootstrap\WindsorContainer\WindsorDependencyScope.cs" />
     <Compile Include="Bootstrap\WindsorContainer\WindsorHttpDependencyResolver.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\BaseValidator.cs" />
+    <Compile Include="Validation\Extensions.cs" />
+    <Compile Include="Validation\LoginValidator.cs" />
+    <Compile Include="Validation\ValidationExceptionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -121,7 +130,7 @@
       <Name>Crip.Samples.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crip.Samples.Services\Crip.Samples.Services.csproj">
-      <Project>{6E705C00-F7D2-48E3-99E6-A00489E10178}</Project>
+      <Project>{6e705c00-f7d2-48e3-99e6-a00489e10178}</Project>
       <Name>Crip.Samples.Services</Name>
     </ProjectReference>
   </ItemGroup>

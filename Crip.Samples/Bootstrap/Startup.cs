@@ -1,9 +1,10 @@
-﻿using System;
-using System.Web.Http;
-using Castle.Windsor;
+﻿using Castle.Windsor;
+using Crip.Samples.Validation;
 using Microsoft.Owin;
 using Owin;
 using Owino.Extensions;
+using System;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(Crip.Samples.Bootstrap.Startup))]
 
@@ -38,6 +39,8 @@ namespace Crip.Samples.Bootstrap
                 name: "WebApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: apiDefaults);
+
+            config.Filters.Add(new ValidationExceptionAttribute());
 
             app.UseWebApi(config);
             app.RegisterForDisposal(this.container);

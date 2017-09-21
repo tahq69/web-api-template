@@ -2,14 +2,15 @@
 {
     using Crip.Samples.Models.User;
     using Crip.Samples.Services;
+    using Crip.Samples.Validation;
     using System.Threading.Tasks;
     using System.Web.Http;
 
     /// <summary>
     /// Authorization controller.
     /// </summary>
-    /// <seealso cref="System.Web.Http.ApiController" />
-    public class AuthController : ApiController
+    /// <seealso cref="Crip.Samples.Controllers.BaseApiController" />
+    public class AuthController : BaseApiController
     {
         /// <summary>
         /// Gets or sets the user service.
@@ -27,7 +28,8 @@
         [AllowAnonymous]
         public async Task<UserDetails> Login(Credentials credentials)
         {
-            // TODO: validate data before call service.
+            credentials.Validate(new LoginValidator(this.Context));
+
             var user = await this.UserService.Login(credentials);
 
             return user;
