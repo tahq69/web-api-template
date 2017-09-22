@@ -10,7 +10,7 @@
     {
         private StatusController ctrl;
 
-        protected TestSubstitutes Substitute { get; private set; }
+        protected TestSubstitutes Sub { get; private set; }
 
         /// <summary>
         /// Sets up method tests.
@@ -18,11 +18,11 @@
         [TestInitialize]
         public void TestInitialize()
         {
-            this.Substitute = new TestSubstitutes();
+            this.Sub = new TestSubstitutes();
 
             var svc = new UserService()
             {
-                Context = this.Substitute.Context(),
+                Context = this.Sub.Context(),
             };
 
             this.ctrl = new StatusController

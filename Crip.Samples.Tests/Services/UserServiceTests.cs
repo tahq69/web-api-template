@@ -15,7 +15,7 @@
     {
         private IUserService svc;
 
-        protected TestSubstitutes Substitute { get; private set; }
+        protected TestSubstitutes Sub { get; private set; }
 
         /// <summary>
         /// Sets up method tests.
@@ -23,13 +23,13 @@
         [TestInitialize]
         public void SetUp()
         {
-            var securityService = NSubstitute.Substitute.For<ISecurityService>();
-            var tokenService = NSubstitute.Substitute.For<ITokenService>();
+            var securityService = Substitute.For<ISecurityService>();
+            var tokenService = Substitute.For<ITokenService>();
 
-            this.Substitute = new TestSubstitutes();
+            this.Sub = new TestSubstitutes();
             this.svc = new UserService
             {
-                Context = this.Substitute.Context(),
+                Context = this.Sub.Context(),
                 SecurityService = securityService,
                 TokenService = tokenService,
             };
@@ -87,10 +87,10 @@
                 "Method 'Register' returned null instead of record");
 
             Assert.AreEqual(
-                1, this.Substitute.Users.Inserted.Count,
+                1, this.Sub.Users.Inserted.Count,
                 "Method 'Register' should insert single user record to DB");
 
-            var inserted = this.Substitute.Users.Inserted[0];
+            var inserted = this.Sub.Users.Inserted[0];
 
             Assert.AreEqual(
                 "email_1@example.com", inserted.Email,
@@ -115,7 +115,7 @@
                 Username = "Username_2",
             });
 
-            var inserted = this.Substitute.Users.Inserted[0];
+            var inserted = this.Sub.Users.Inserted[0];
 
             Assert.IsFalse(
                 string.IsNullOrWhiteSpace(inserted.Password),
@@ -139,7 +139,7 @@
                 Username = "Username_3",
             });
 
-            var inserted = this.Substitute.Users.Inserted[0];
+            var inserted = this.Sub.Users.Inserted[0];
 
             Assert.AreEqual(
                 inserted.Email, result.Email,
@@ -249,7 +249,7 @@
 
             Assert.IsNotNull(result, "On incorrect input can get user");
 
-            var userToken = this.Substitute.Users.Data
+            var userToken = this.Sub.Users.Data
                 .First(u => u.Email.Equals(TestData.UserTom.Email))
                 .RememberToken;
 

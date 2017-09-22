@@ -4,6 +4,7 @@
     using Crip.Samples.Models.User;
     using Crip.Samples.Services;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NSubstitute;
     using System.Threading.Tasks;
 
     [TestClass]
@@ -11,7 +12,7 @@
     {
         private AuthController ctrl;
 
-        protected TestSubstitutes Substitute { get; private set; }
+        protected TestSubstitutes Sub { get; private set; }
 
         /// <summary>
         /// Sets up method tests.
@@ -19,15 +20,10 @@
         [TestInitialize]
         public void TestInitialize()
         {
-            this.Substitute = new TestSubstitutes();
+            this.Sub = new TestSubstitutes();
 
-            var ctx = this.Substitute.Context();
-            var svc = new UserService()
-            {
-                Context = ctx,
-                SecurityService = NSubstitute.Substitute.For<ISecurityService>(),
-                TokenService = NSubstitute.Substitute.For<ITokenService>(),
-            };
+            var ctx = this.Sub.Context();
+            var svc = Substitute.For<IUserService>();
 
             this.ctrl = new AuthController
             {
@@ -39,11 +35,17 @@
         [TestMethod]
         public async Task Test_ApiAuth_CanGetRegisteretUserDetails()
         {
-            var user = await this.ctrl.Login(new Credentials
+            var credentials = new Credentials
             {
-                Username = TestData.UserHarley.Username,
-                Password = "Password_3",
-            });
+                Username = "Username",
+                Password = "Password",
+            };
+
+            this.ctrl.UserService
+                .Login(credentials)
+                .Returns(TestData.UserDetailsHarley);
+
+            var user = await this.ctrl.Login(credentials);
 
             Assert.IsNotNull(
                 user,

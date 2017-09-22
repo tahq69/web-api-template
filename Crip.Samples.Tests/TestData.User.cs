@@ -1,7 +1,7 @@
-﻿namespace Crip.Samples.Tests
-{
-    using Crip.Samples.Data.Entities;
+﻿using Crip.Samples.Data.Entities;
 
+namespace Crip.Samples.Tests
+{
     /// <summary>
     /// Product entity test data.
     /// </summary>
@@ -45,6 +45,19 @@
             Username = "HarleyHammer",
             Password = "Password_3_Hash",
         };
+
+        /// <summary>
+        /// Gets the user details: Harley Hammer.
+        /// </summary>
+        public static Models.User.UserDetails UserDetailsHarley
+            => new Models.User.UserDetails
+            {
+                Id = TestData.UserHarley.Id,
+                Email = TestData.UserHarley.Email,
+                Username = TestData.UserHarley.Username,
+                Name = TestData.UserHarley.Name,
+                Surname = TestData.UserHarley.Surname,
+            };
 
         /// <summary>
         /// Gets the collection of users.
