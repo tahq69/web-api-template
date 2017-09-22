@@ -17,7 +17,7 @@
         /// <summary>
         /// Gets or sets the user service.
         /// </summary>
-        public IUserService UserSvc { get; set; }
+        public IUserService UserService { get; set; }
 
         /// <summary>
         /// Gets status details instance.
@@ -54,7 +54,7 @@
 
             try
             {
-                var users = await this.UserSvc.All();
+                var users = await this.UserService.All();
                 users.FirstOrDefault();
             }
             catch (Exception ex)

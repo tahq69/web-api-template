@@ -27,7 +27,7 @@
 
             this.ctrl = new StatusController
             {
-                UserSvc = svc,
+                UserService = svc,
             };
         }
 

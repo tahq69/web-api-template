@@ -15,7 +15,7 @@
         /// <summary>
         /// Gets or sets the user service.
         /// </summary>
-        public IUserService UserSvc { get; set; }
+        public IUserService UserService { get; set; }
 
         /// <summary>
         /// Gets collection of all users.
@@ -23,7 +23,7 @@
         /// <returns>Collection of all users.</returns>
         public async Task<IEnumerable<User>> Index()
         {
-            return await this.UserSvc.All();
+            return await this.UserService.All();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@
         /// <returns>Single user instance.</returns>
         public async Task<IHttpActionResult> Find(int id)
         {
-            var product = await this.UserSvc.Find(id);
+            var product = await this.UserService.Find(id);
             if (product == null)
             {
                 return this.NotFound();
