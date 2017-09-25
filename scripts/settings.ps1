@@ -1,4 +1,6 @@
 $settings = @{
+	UpdateFiles = @('*.cs', '*.csproj', '*.config', '*.sln')
+
 	Target = @{
 		Name = 'Name'
 		Description = 'Description'

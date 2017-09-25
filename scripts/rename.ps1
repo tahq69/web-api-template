@@ -13,15 +13,6 @@ if ($isNameDefault -or $isDescriptionDefault -or $isNamespaceDefault) {
 }
 #>
 
-$csFiles = Get-All-Files $root '*.cs'
-$projFiles = Get-All-Files $root '*.csproj'
-$configFiles = Get-All-Files $root '*.config'
-$slnFiles = Get-All-Files $root '*.sln'
+$files = Get-All-Files $root $settings.UpdateFiles
+Update-Content $files
 
-Update-Content $csFiles
-
-<#
-Update-Content $projFiles
-Update-Content $configFiles
-Update-Content $slnFiles
-#>

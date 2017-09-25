@@ -7,26 +7,31 @@ function Write-Log ($message) {
 
 function Get-All-Files (
 	[string] $path = $PWD,
-	[string] $ext = '*.cs'
+	$exts = @('*.cs')
 ) {
-	foreach ($item in Get-ChildItem -Path "${path}\*" -Include $ext -Recurse -Force) {
-		if (-not($item.FullName.Contains("\bin\")) -and
-			-not($item.FullName.Contains("\obj\")) -and
-			-not($item.FullName.Contains("\packages\")) -and
-			-not($item.FullName.Contains("\.vs\"))
-		) {
-			Write-Log $item.FullName
-			$item.FullName.Replace("${path}\", '')
+	foreach ($ext in $exts) {
+		foreach ($item in Get-ChildItem -Path "${path}\*" -Include $ext -Recurse -Force) {
+			if (-not($item.FullName.Contains("\bin\"))      -and
+				-not($item.FullName.Contains("\obj\"))      -and
+				-not($item.FullName.Contains("\packages\")) -and
+				-not($item.FullName.Contains("\.vs\")       -and
+				-not($item.FullName -eq ${path}))
+			) {
+				$item.FullName.Replace("${path}\", '')
+			}
 		}
 	}
 }
 
 function Update-Content ($files) {
-	#foreach ($file in $files) {
-	#	$fullFile = "${root}\${file}"
-	#	
-	#	Write-Log "$root : $file : $fullFile"
-
-	#	(Get-Content $fullFile).replace($settings.Current.Namespace, $settings.Target.Namespace) | Set-Content $fullFile
-	#}
+	foreach ($file in $files) {
+		$path = "$root\$file"
+		Write-Log "Updating content of $path..."
+		(Get-Content $path) | Foreach-Object {
+			$_	-replace $settings.Current.Namespace,   $settings.Target.Namespace `
+				-replace $settings.Current.Description, $settings.Target.Description `
+				-replace $settings.Current.Name,        $settings.Target.Name
+		} | Set-Content $path -Encoding UTF8
+	}
 }
+
