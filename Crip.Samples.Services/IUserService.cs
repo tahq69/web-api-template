@@ -2,7 +2,6 @@
 {
     using Crip.Samples.Models;
     using Crip.Samples.Models.User;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
