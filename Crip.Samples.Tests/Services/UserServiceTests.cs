@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using NSubstitute;
     using Crip.Samples.Models;
+    using Crip.Samples.Models.Notification;
 
     /// <summary>
     /// User service tests.
@@ -26,6 +27,7 @@
         {
             var securityService = Substitute.For<ISecurityService>();
             var tokenService = Substitute.For<ITokenService>();
+            var notificationService = Substitute.For<INotificationService>();
 
             this.Sub = new TestSubstitutes();
             this.svc = new UserService
@@ -33,6 +35,7 @@
                 Context = this.Sub.Context(),
                 SecurityService = securityService,
                 TokenService = tokenService,
+                NotificationService = notificationService,
             };
         }
 
@@ -162,6 +165,22 @@
             Assert.AreEqual(
                 inserted.Username, result.Username,
                 "Inserted email is not equal to returned one");
+        }
+
+        [TestMethod]
+        public async Task Test_User_RegisterShouldSendRegistrationNotification()
+        {
+            var result = await this.svc.Register(new Registration
+            {
+                Email = "email_4@example.com",
+                Name = "Name_4",
+                Password = "Password_4",
+                Surname = "Surname_4",
+                Username = "Username_4",
+            });
+
+            await this.svc.NotificationService
+                .Received().Send(Arg.Any<Message>());
         }
 
         [TestMethod]
