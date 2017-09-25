@@ -54,7 +54,10 @@
     <Compile Include="IPaged.cs" />
     <Compile Include="IPagedData.cs" />
     <Compile Include="Notification\Message.cs" />
-    <Compile Include="Paged.cs" />
+    <Compile Include="Paged.cs">
+      <DependentUpon>IPaged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PagedData.cs" />
     <Compile Include="Resources\Validation.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

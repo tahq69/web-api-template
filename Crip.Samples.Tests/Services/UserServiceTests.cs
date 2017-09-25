@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using NSubstitute;
+    using Crip.Samples.Models;
 
     /// <summary>
     /// User service tests.
@@ -41,15 +42,20 @@
         [TestMethod]
         public async Task Test_User_AllShouldReturnCollectionOfUsers()
         {
-            var result = await this.svc.All();
+            var pager = new Paged(1, 2);
+            var result = await this.svc.All(pager);
 
             Assert.IsNotNull(
                 result,
-                "Method 'All' returned null instead of collection");
+                "Method 'All' returned null instead of pagination data");
 
-            Assert.IsTrue(
-                result.Count() > 0,
-                "Result count should be greater than a 0");
+            Assert.IsNotNull(
+                result.Data,
+                "Method 'All' returned null instead of collection data");
+
+            Assert.AreEqual(
+                2, result.Data.Count(),
+                "Result count should contain 2 users");
         }
 
         /// <summary>

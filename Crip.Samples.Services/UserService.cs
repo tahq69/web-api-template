@@ -1,5 +1,6 @@
 ﻿namespace Crip.Samples.Services
 {
+    using Crip.Samples.Models;
     using Crip.Samples.Models.User;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -29,21 +30,29 @@
         public INotificationService NotificationService { get; set; }
 
         /// <summary>
-        /// Gets all users from database.
+        /// Gets paged users from database.
         /// </summary>
+        /// <param name="paged">The pagination.</param>
         /// <returns>
         /// Collection of all users.
         /// </returns>
-        public async Task<IEnumerable<User>> All()
+        public async Task<IPagedData<User>> All(IPaged paged)
         {
-            return await this.Context.Users.Select(user => new User
-            {
-                Id = user.Id,
-                Email = user.Email,
-                Username = user.Username,
-                Name = user.Name,
-                Surname = user.Surname,
-            }).ToListAsync();
+            var total = await this.Context.Users.CountAsync();
+            var data = this.Context.Users
+                .Take(paged.PerPage)
+                .Skip(paged.Skip)
+                .Select(user => new User
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Username = user.Username,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                })
+                .ToList();
+
+            return new PagedData<User>(paged, data, total);
         }
 
         /// <summary>
@@ -169,6 +178,19 @@
         /// A <see cref="Task" /> representing the asynchronous operation.
         /// </returns>
         public Task SendResetPassword(string email)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Updates the password from password reset.
+        /// </summary>
+        /// <param name="token">Password reset token.</param>
+        /// <param name="credentials">The credentials.</param>
+        /// <returns>
+        /// Updated user details.
+        /// </returns>
+        public Task<UserDetails> UpdatePassword(string token, Credentials credentials)
         {
             throw new System.NotImplementedException();
         }

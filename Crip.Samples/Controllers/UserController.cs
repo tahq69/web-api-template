@@ -1,5 +1,6 @@
 ﻿namespace Crip.Samples.Controllers
 {
+    using Crip.Samples.Models;
     using Crip.Samples.Models.User;
     using Crip.Samples.Services;
     using System.Collections.Generic;
@@ -18,12 +19,18 @@
         public IUserService UserService { get; set; }
 
         /// <summary>
-        /// Gets collection of all users.
+        /// Gets collection of paged users.
         /// </summary>
-        /// <returns>Collection of all users.</returns>
-        public async Task<IEnumerable<User>> Index()
+        /// <param name="page">The page.</param>
+        /// <param name="perPage">The per page.</param>
+        /// <returns>
+        /// Collection of paged users.
+        /// </returns>
+        public async Task<IPagedData<User>> Index(int page = 1, int perPage = 15)
         {
-            return await this.UserService.All();
+            var pager = new Paged(page, perPage);
+
+            return await this.UserService.All(pager);
         }
 
         /// <summary>

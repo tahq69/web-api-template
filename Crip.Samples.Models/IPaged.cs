@@ -19,6 +19,11 @@
         /// <summary>
         /// Gets or sets the size of the page.
         /// </summary>
-        int PageSize { get; set; }
+        int PerPage { get; set; }
+
+        /// <summary>
+        /// Gets count of the record to skip.
+        /// </summary>
+        int Skip { get; }
     }
 }

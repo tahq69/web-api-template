@@ -1,5 +1,6 @@
 ﻿namespace Crip.Samples.Controllers
 {
+    using Crip.Samples.Models;
     using Crip.Samples.Models.Status;
     using Crip.Samples.Services;
     using System;
@@ -54,8 +55,7 @@
 
             try
             {
-                var users = await this.UserService.All();
-                users.FirstOrDefault();
+                var users = await this.UserService.All(new Paged(1, 1));
             }
             catch (Exception ex)
             {
