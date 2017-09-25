@@ -1,5 +1,6 @@
 ﻿namespace Crip.Samples.Services
 {
+    using Crip.Samples.Models;
     using Crip.Samples.Models.User;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -20,6 +21,11 @@
         ITokenService TokenService { get; set; }
 
         /// <summary>
+        /// Gets or sets the notification service.
+        /// </summary>
+        INotificationService NotificationService { get; set; }
+
+        /// <summary>
         /// Authorizes user by the specified credentials.
         /// </summary>
         /// <param name="credentials">The credentials.</param>
@@ -34,10 +40,40 @@
         Task<UserDetails> Register(Registration registration);
 
         /// <summary>
-        /// Gets all users from database.
+        /// Sends password reset email.
         /// </summary>
-        /// <returns>Collection of all users.</returns>
-        Task<IEnumerable<User>> All();
+        /// <param name="email">User email.</param>
+        /// <returns>
+        /// A <see cref="Task" /> representing the asynchronous operation.
+        /// </returns>
+        Task SendResetPassword(string email);
+
+        /// <summary>
+        /// Updates the password from password reset.
+        /// </summary>
+        /// <param name="token">Password reset token.</param>
+        /// <param name="credentials">The credentials.</param>
+        /// <returns>Updated user details.</returns>
+        Task<UserDetails> UpdatePassword(string token, Credentials credentials);
+
+        /// <summary>
+        /// Confirms user email address.
+        /// </summary>
+        /// <param name="token">Email confirmation token.</param>
+        /// <returns>
+        /// A <see cref="Task"/> representing the asynchronous operation of
+        /// email confirmation.
+        /// </returns>
+        Task<bool> ConfirmEmail(string token);
+
+        /// <summary>
+        /// Gets paginated users from database.
+        /// </summary>
+        /// <param name="paged">The pagination.</param>
+        /// <returns>
+        /// Collection of paged users.
+        /// </returns>
+        Task<IPagedData<User>> All(IPaged paged);
 
         /// <summary>
         /// Finds the user by the specified identifier.

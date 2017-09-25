@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="INotificationService.cs" />
     <Compile Include="ISecurityService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="ITokenService.cs" />

@@ -24,6 +24,11 @@
         public ITokenService TokenService { get; set; }
 
         /// <summary>
+        /// Gets or sets the notification service.
+        /// </summary>
+        public INotificationService NotificationService { get; set; }
+
+        /// <summary>
         /// Gets all users from database.
         /// </summary>
         /// <returns>
@@ -39,6 +44,19 @@
                 Name = user.Name,
                 Surname = user.Surname,
             }).ToListAsync();
+        }
+
+        /// <summary>
+        /// Confirms user email address.
+        /// </summary>
+        /// <param name="token">Email confirmation token.</param>
+        /// <returns>
+        /// A <see cref="Task" /> representing the asynchronous operation of
+        /// email confirmation.
+        /// </returns>
+        public Task<bool> ConfirmEmail(string token)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -141,6 +159,18 @@
                 Name = user.Name,
                 Surname = user.Surname,
             };
+        }
+
+        /// <summary>
+        /// Sends password reset email.
+        /// </summary>
+        /// <param name="email">User email.</param>
+        /// <returns>
+        /// A <see cref="Task" /> representing the asynchronous operation.
+        /// </returns>
+        public Task SendResetPassword(string email)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

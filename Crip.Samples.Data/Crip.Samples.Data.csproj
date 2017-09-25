@@ -59,6 +59,7 @@
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="GlobalSuppressions.cs" />
