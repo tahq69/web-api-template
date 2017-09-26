@@ -1,5 +1,5 @@
-. .\help.ps1
-. .\settings.ps1
+. .\scripts\help.ps1
+. .\scripts\settings.ps1
 
 Write-Log "Starting to rename project."
 
@@ -22,23 +22,7 @@ git add .
 git commit -m $settings.GitUpdateMessage
 
 # Update file/folder names
-$currName = $settings.Current.Namespace
-$newName = $settings.Target.Namespace
-$namePattern = "*{0}*" -f $currName
-
-## Rename all files in a repository
-Get-ChildItem -Path $namePattern -File -Recurse | % {
-	Rename-Item -Path $_.PSPath -NewName (
-		$_.name -replace $currName, $newName
-	)
-} | out-null
-
-## And only then rename folder, to avoid missing files
-Get-ChildItem -Path $namePattern -Directory | ForEach-Object -Process {
-	Rename-item -Path $_.Name -NewName (
-		$_.name -replace $currName, $newName
-	)
-} | out-null
+Update-Names
 
 # Commit file/folder name update
 git add .
