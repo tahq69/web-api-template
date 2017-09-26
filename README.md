@@ -10,7 +10,9 @@ This project is just a sample of 'perfect' web api application by my opinion.
 
 ### How to use:
  - Add this project as new remote for your repisitory;
- - Run ???.ps to update project name and namespaces;
+ - Update `.\scripts\settings.ps1` file `Target` section with your project details;
+ - Run `powershell .\scripts\rename.ps1` to update project name and namespaces;
+ - Fix namespace order ocurrances in code;
  - Start .Web application;
 
 ### TODO list

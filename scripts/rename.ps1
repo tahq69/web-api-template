@@ -17,8 +17,6 @@ if ($isNameDefault -or $isDescriptionDefault -or $isNamespaceDefault) {
 $files = Get-All-Files $root $settings.UpdateFiles
 Update-Content $files
 
-cd ..
-
 # Commit content update
 git add .
 git commit -m $settings.GitUpdateMessage
@@ -45,6 +43,3 @@ Get-ChildItem -Path $namePattern -Directory | ForEach-Object -Process {
 # Commit file/folder name update
 git add .
 git commit -m $settings.GitMoveMessage
-
-# Go bac to scripts dir
-cd scripts
