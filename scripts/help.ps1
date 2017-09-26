@@ -26,12 +26,12 @@ function Get-All-Files (
 function Update-Content ($files) {
 	foreach ($file in $files) {
 		$path = "$root\$file"
-		Write-Log "Updating content of $path..."
+		Write-Log "Updating content of $file..."
 		(Get-Content $path) | Foreach-Object {
 			$_	-replace $settings.Current.Namespace,   $settings.Target.Namespace `
 				-replace $settings.Current.Description, $settings.Target.Description `
 				-replace $settings.Current.Name,        $settings.Target.Name
-		} | Set-Content $path -Encoding UTF8
+		} | Set-Content $path -Encoding UTF8 | Write-Log "Updating content of $file completed"
 	}
 }
 

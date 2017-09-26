@@ -16,3 +16,9 @@ if ($isNameDefault -or $isDescriptionDefault -or $isNamespaceDefault) {
 $files = Get-All-Files $root $settings.UpdateFiles
 Update-Content $files
 
+cd ..
+
+git add .
+git commit -m $settings.GitUpdateMessage
+
+cd scripts

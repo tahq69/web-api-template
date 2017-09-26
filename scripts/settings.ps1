@@ -1,6 +1,10 @@
 $settings = @{
 	UpdateFiles = @('*.cs', '*.csproj', '*.config', '*.sln')
 
+	GitUpdateMessage = "File content updated"
+
+	GitMoveMessage = "Files and folders renamed"
+
 	Target = @{
 		Name = 'Name'
 		Description = 'Description'
