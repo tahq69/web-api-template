@@ -43,6 +43,8 @@ namespace Crip.Samples.Bootstrap
             config.Filters.Add(new ValidationExceptionAttribute());
             config.Filters.Add(new UnauthorizedAccessAttribute());
 
+            config.Routes.IgnoreRoute("HTML", "dist/{*pathInfo}");
+
             app.UseWebApi(config);
             app.RegisterForDisposal(this.container);
         }

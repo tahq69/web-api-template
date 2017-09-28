@@ -1,0 +1,37 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Custom styles
+
+.fa {
+  &.danger {
+    color: #d9534f;
+  }
+
+  &.success {
+    color: #5cb85c;
+  }
+
+  &.gray {
+    color: $second-color;
+  }
+
+  &.white {
+    color: $footer-text-color;
+  }
+}
+
+.panel-heading .pull-right.conf {
+  margin-top: -7px;
+  padding: 7px;
+
+  &:hover .fa {
+    color: $link-color-inverse;
+  }
+}

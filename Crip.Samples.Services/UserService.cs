@@ -41,6 +41,7 @@
             var total = await this.Context.Users.CountAsync();
             var data = this.Context.Users
                 .Take(paged.PerPage)
+                .OrderBy(user => user.Id)
                 .Skip(paged.Skip)
                 .Select(user => new User
                 {

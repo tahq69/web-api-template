@@ -19,8 +19,5 @@
 </script>
 
 <style lang="scss">
-  #app {
-    background-color: black;
-    color: white;
-  }
+  @import "styles";
 </style>
