@@ -16,7 +16,6 @@ This project is just a sample of 'perfect' web api application by my opinion.
  - Start .Web application;
 
 ### TODO list
- - PS script to rename project and namespaces;
  - Front end application suing SASS/TypeScript
    - Generate interfaces from C# models (http://type.litesolutions.net/Tutorials)
    - Use some bundler to compile in to single javascript file
