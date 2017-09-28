@@ -286,3 +286,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/Crip.Samples.Web/dist
+Crip.Samples.Web/src/**/*.js
+Crip.Samples.Web/src/**/*.js.map

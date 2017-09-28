@@ -8,6 +8,10 @@ This project is just a sample of 'perfect' web api application by my opinion.
  - Entity Framework: database ORM;
  - VueJs: javascript front-end library;
 
+### VS Extensions required:
+ - [NPM Task Runner](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner)
+ - [Vue.js Pack](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.VuejsPack-18329)
+
 ### How to use:
  - Add this project as new remote for your repisitory;
  - Update `.\scripts\settings.ps1` file `Target` section with your project details;
