@@ -119,6 +119,11 @@
     <Content Include="packages.config" />
     <Content Include="src\App.vue" />
     <Content Include="package.json" />
+    <TypeScriptCompile Include="src\api\index.ts" />
+    <TypeScriptCompile Include="src\config.ts" />
+    <TypeScriptCompile Include="src\extensions\Log.ts" />
+    <TypeScriptCompile Include="src\models\StatusDetails.ts" />
+    <TypeScriptCompile Include="src\modules\status\api.ts" />
     <TypeScriptCompile Include="src\router.ts" />
     <Content Include="tsconfig.json" />
     <Content Include=".editorconfig" />
@@ -131,6 +136,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <TypeScriptCompile Include="src\utils.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
