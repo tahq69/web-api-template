@@ -105,9 +105,11 @@
     <Content Include=".postcssrc.js" />
     <Content Include="build\build.js" />
     <Content Include="build\check-versions.js" />
+    <Content Include="build\dev-client.js" />
     <Content Include="build\utils.js" />
     <Content Include="build\vue-loader.conf.js" />
     <Content Include="build\webpack.base.conf.js" />
+    <Content Include="build\webpack.dev.conf.js" />
     <Content Include="build\webpack.prod.conf.js" />
     <Content Include="config\dev.env.js" />
     <Content Include="build\dev.js" />

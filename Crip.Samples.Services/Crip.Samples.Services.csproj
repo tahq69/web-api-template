@@ -64,6 +64,7 @@
     <Compile Include="ISecurityService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="ITokenService.cs" />
+    <Compile Include="NotificationService.cs" />
     <Compile Include="SecurityService.cs">
       <DependentUpon>ISecurityService.cs</DependentUpon>
     </Compile>

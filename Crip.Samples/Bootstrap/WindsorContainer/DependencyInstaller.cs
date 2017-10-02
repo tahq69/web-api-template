@@ -24,16 +24,15 @@
                 .Configure(configurer => configurer.Named(configurer.Implementation.Name))
                 .LifestylePerWebRequest());
 
-            container.Register(Component.For<IUserService>().ImplementedBy<UserService>());
-            container.Register(Component.For<IDatabaseContext>().ImplementedBy<DatabaseContext>());
+            container.Register(Component.For<IConfig>()
+                .UsingFactoryMethod((kernel, cx) => new Config(true))
+                .LifestyleSingleton());
 
-            /* container.Register(Component.For<RoleManager<IdentityRole>>()
-                .UsingFactoryMethod((kernel, cx) =>
-                {
-                    var ctx = kernel.Resolve<AuthContext>();
-                    return new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ctx));
-                }).LifestylePerWebRequest()
-            ); */
+            container.Register(Component.For<IDatabaseContext>().ImplementedBy<DatabaseContext>());
+            container.Register(Component.For<INotificationService>().ImplementedBy<NotificationService>());
+            container.Register(Component.For<ISecurityService>().ImplementedBy<SecurityService>());
+            container.Register(Component.For<ITokenService>().ImplementedBy<TokenService>());
+            container.Register(Component.For<IUserService>().ImplementedBy<UserService>());
         }
     }
 }
