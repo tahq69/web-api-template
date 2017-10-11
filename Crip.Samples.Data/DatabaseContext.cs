@@ -32,6 +32,11 @@
         }
 
         /// <summary>
+        /// Gets the database transaction.
+        /// </summary>
+        public DbContextTransaction Transaction { get; private set; }
+
+        /// <summary>
         /// Gets or sets the users table.
         /// </summary>
         public IDbSet<User> Users { get; set; }
@@ -40,6 +45,33 @@
         /// Gets or sets the roles table.
         /// </summary>
         public IDbSet<Role> Roles { get; set; }
+
+        /// <summary>
+        /// Begins database transaction.
+        /// </summary>
+        public void BeginTransaction()
+        {
+            if (this.Transaction == null)
+            {
+                this.Transaction = this.Database.BeginTransaction();
+            }
+        }
+
+        /// <summary>
+        /// Commits database transaction.
+        /// </summary>
+        public void Commit()
+        {
+            this.Transaction.Commit();
+        }
+
+        /// <summary>
+        /// Rollbacks database transaction.
+        /// </summary>
+        public void Rollback()
+        {
+            this.Transaction.Rollback();
+        }
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database.

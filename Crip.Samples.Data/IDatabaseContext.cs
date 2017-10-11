@@ -11,6 +11,11 @@
     public interface IDatabaseContext
     {
         /// <summary>
+        /// Gets the database transaction.
+        /// </summary>
+        DbContextTransaction Transaction { get; }
+
+        /// <summary>
         /// Gets or sets the users table.
         /// </summary>
         IDbSet<User> Users { get; set; }
@@ -66,5 +71,20 @@
         /// to as independent associations).
         /// </returns>
         Task<int> SaveChangesAsync();
+
+        /// <summary>
+        /// Commits database transaction.
+        /// </summary>
+        void Commit();
+
+        /// <summary>
+        /// Rollbacks database transaction.
+        /// </summary>
+        void Rollback();
+
+        /// <summary>
+        /// Begins database transaction.
+        /// </summary>
+        void BeginTransaction();
     }
 }
