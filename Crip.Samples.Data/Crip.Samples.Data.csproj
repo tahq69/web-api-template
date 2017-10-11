@@ -56,7 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="DatabaseContext.cs">
+      <DependentUpon>IDatabaseContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseTransaction.cs">
+      <DependentUpon>IDatabaseTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Message.cs" />
@@ -64,6 +69,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDatabaseContext.cs" />
+    <Compile Include="IDatabaseTransaction.cs" />
     <Compile Include="Migrations\201709181919133_CreateUserAndRoleTable.cs" />
     <Compile Include="Migrations\201709181919133_CreateUserAndRoleTable.Designer.cs">
       <DependentUpon>201709181919133_CreateUserAndRoleTable.cs</DependentUpon>

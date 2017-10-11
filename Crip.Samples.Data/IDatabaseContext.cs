@@ -73,18 +73,9 @@
         Task<int> SaveChangesAsync();
 
         /// <summary>
-        /// Commits database transaction.
+        /// Begins a transaction on the underlying store connection.
         /// </summary>
-        void Commit();
-
-        /// <summary>
-        /// Rollbacks database transaction.
-        /// </summary>
-        void Rollback();
-
-        /// <summary>
-        /// Begins database transaction.
-        /// </summary>
-        void BeginTransaction();
+        /// <returns>Database transaction.</returns>
+        IDatabaseTransaction BeginTransaction();
     }
 }

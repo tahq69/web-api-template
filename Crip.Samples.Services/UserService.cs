@@ -157,26 +157,28 @@
                 Password = passwordHash
             };
 
-            this.Context.BeginTransaction();
-
-            this.Context.Users.Add(user);
-
             var recipient = new User
             {
                 Email = user.Email,
                 Id = user.Id
             };
 
-            await this.NotificationService.Send(new Models.Notification.Message
+            var message = new Models.Notification.Message
             {
                 To = new List<User> { recipient },
                 Subject = "Welcome to our application",
                 Body = "Your registration successfully completed.",
-            });
+            };
 
-            await this.Context.SaveChangesAsync();
+            using (var transaction = this.Context.BeginTransaction())
+            {
+                this.Context.Users.Add(user);
 
-            this.Context.Commit();
+                await this.NotificationService.Send(message);
+                await this.Context.SaveChangesAsync();
+
+                transaction.Commit();
+            }
 
             return new UserDetails
             {

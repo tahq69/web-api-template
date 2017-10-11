@@ -47,27 +47,12 @@
         public IDbSet<Role> Roles { get; set; }
 
         /// <summary>
-        /// Begins database transaction.
+        /// Begins a transaction on the underlying store connection.
         /// </summary>
-        public void BeginTransaction()
+        /// <returns>Database transaction.</returns>
+        public IDatabaseTransaction BeginTransaction()
         {
-            this.Transaction = this.Database.BeginTransaction();
-        }
-
-        /// <summary>
-        /// Commits database transaction.
-        /// </summary>
-        public void Commit()
-        {
-            this.Transaction.Commit();
-        }
-
-        /// <summary>
-        /// Rollbacks database transaction.
-        /// </summary>
-        public void Rollback()
-        {
-            this.Transaction.Rollback();
+            return new DatabaseTransaction(this.Database.BeginTransaction());
         }
 
         /// <summary>
