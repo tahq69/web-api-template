@@ -51,10 +51,7 @@
         /// </summary>
         public void BeginTransaction()
         {
-            if (this.Transaction == null)
-            {
-                this.Transaction = this.Database.BeginTransaction();
-            }
+            this.Transaction = this.Database.BeginTransaction();
         }
 
         /// <summary>

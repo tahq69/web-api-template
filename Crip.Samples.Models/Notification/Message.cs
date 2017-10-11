@@ -28,7 +28,7 @@
         /// Gets or sets a value indicating whether this message body is in
         /// HTML.
         /// </summary>
-        public bool IsBodyHtml { get; set; }
+        public bool IsBodyHtml { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the subject line for this message.
