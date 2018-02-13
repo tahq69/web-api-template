@@ -115,6 +115,7 @@
     <Content Include="src\views\Home.vue" />
     <Content Include="package-lock.json" />
     <Content Include="src\views\auth\Login.vue" />
+    <Content Include=".gitignore" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -123,6 +124,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="vue.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
