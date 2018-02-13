@@ -1,14 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import { extensions } from './extensions/log'
-import 'font-awesome/scss/font-awesome.scss'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 
-extensions.install(Vue.prototype)
+Vue.config.productionTip = false;
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
-  render: h => h(App),
-})
+  store,
+  render: (h) => h(App),
+}).$mount('#app');

@@ -1,16 +1,30 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
     "target": "es5",
-    "lib": [
-      "es5",
-      "es2015.promise",
-      "dom"
-    ],
-    "sourceMap": true,
     "module": "es2015",
+    "strict": true,
+    "jsx": "preserve",
     "moduleResolution": "node",
-    "types": []
-  }
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "node",
+      "mocha",
+      "chai"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

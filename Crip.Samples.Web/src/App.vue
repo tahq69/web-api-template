@@ -1,26 +1,32 @@
 <template>
   <div id="app">
-    Hello from Vue.js
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script lang="ts" >
-  import Vue from 'vue'
-  import Component from 'vue-class-component'
-  import { status } from './modules/status/api'
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-  @Component({ name: 'app' })
-  export default class App extends Vue {
+#nav {
+  padding: 30px;
+}
 
-    async mounted(): Promise<number> {
-      console.log('Application mounted')
-      console.log(await status.api.GetStatus())
-      return 0
-    }
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
 
-  }
-</script>
-
-<style lang="scss">
-  @import "styles";
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>

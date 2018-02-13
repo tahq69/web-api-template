@@ -1,11 +1,21 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import auth from './modules/auth/routes'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import About from './views/About.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
-    auth
-  ]
-})
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+    },
+  ],
+});

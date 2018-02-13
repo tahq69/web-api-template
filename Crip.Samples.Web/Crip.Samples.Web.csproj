@@ -16,7 +16,7 @@
     <RootNamespace>Crip.Samples.Web</RootNamespace>
     <AssemblyName>Crip.Samples.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -25,7 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
-    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,41 +102,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".postcssrc.js" />
-    <Content Include="build\build.js" />
-    <Content Include="build\check-versions.js" />
-    <Content Include="build\dev-client.js" />
-    <Content Include="build\utils.js" />
-    <Content Include="build\vue-loader.conf.js" />
-    <Content Include="build\webpack.base.conf.js" />
-    <Content Include="build\webpack.dev.conf.js" />
-    <Content Include="build\webpack.prod.conf.js" />
-    <Content Include="config\dev.env.js" />
-    <Content Include="build\dev.js" />
-    <Content Include="config\index.js" />
-    <Content Include="config\prod.env.js" />
-    <Content Include="index.html" />
     <Content Include="packages.config" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\index.html" />
     <Content Include="src\App.vue" />
     <Content Include="package.json" />
-    <TypeScriptCompile Include="src\api\index.ts" />
-    <TypeScriptCompile Include="src\config.ts" />
-    <TypeScriptCompile Include="src\extensions\Log.ts" />
-    <TypeScriptCompile Include="src\models\StatusDetails.ts" />
-    <TypeScriptCompile Include="src\modules\status\api.ts" />
-    <TypeScriptCompile Include="src\router.ts" />
+    <Content Include="src\assets\logo.png" />
     <Content Include="tsconfig.json" />
-    <Content Include=".editorconfig" />
-    <Content Include="src\modules\auth\Login.vue" />
-    <Content Include="src\_variables.scss" />
-    <Content Include="src\_styles.scss" />
+    <Content Include="tslint.json" />
+    <Content Include="src\components\HelloWorld.vue" />
+    <Content Include="src\views\About.vue" />
+    <Content Include="src\views\Home.vue" />
+    <Content Include="package-lock.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <TypeScriptCompile Include="src\utils.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -144,14 +127,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="dist\" />
-    <Folder Include="static\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="sfc.d.ts" />
     <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\modules\auth\routes.ts" />
+    <TypeScriptCompile Include="src\router.ts" />
+    <TypeScriptCompile Include="src\shims.d.ts" />
+    <TypeScriptCompile Include="src\store.ts" />
+    <TypeScriptCompile Include="test\unit\HelloWorld.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -186,7 +168,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>13162</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
