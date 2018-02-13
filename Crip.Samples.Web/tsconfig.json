@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "lib": ["dom", "es5", "es2015"],
     "types": [
       "node",
       "mocha",

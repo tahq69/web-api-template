@@ -114,6 +114,7 @@
     <Content Include="src\views\About.vue" />
     <Content Include="src\views\Home.vue" />
     <Content Include="package-lock.json" />
+    <Content Include="src\views\auth\Login.vue" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\modules\auth\router.ts" />
     <TypeScriptCompile Include="src\router.ts" />
     <TypeScriptCompile Include="src\shims.d.ts" />
     <TypeScriptCompile Include="src\store.ts" />
