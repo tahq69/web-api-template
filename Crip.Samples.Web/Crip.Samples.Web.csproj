@@ -127,7 +127,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="dist\css\" />
+    <Folder Include="dist\js\" />
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\router.ts" />
